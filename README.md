@@ -19,6 +19,7 @@ Yannan Jia, Lize Gu, Shihui Zheng
 + imageio >= 2.3.2
 + pytorch == 2.7.0+cu128
 + torchvision == 0.22.0+cu128
+
 ```
 pip install  requirements.txt
 ```
