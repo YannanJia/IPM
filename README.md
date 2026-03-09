@@ -28,7 +28,7 @@ pip install  requirements.txt
 
 ### Prepare the data and models
 
-You should download the [data](https://drive.google.com/drive/folders/1CfobY6i8BfqfWPHL31FKFDipNjqWwAhS) offered by [Admix](https://github.com/JHL-HUST/Admix) and place it in Input/data with label file `val_rs.csv` in `Input`.
+You should download the [data](https://drive.google.com/drive/folders/1CfobY6i8BfqfWPHL31FKFDipNjqWwAhS) offered by [Admix](https://github.com/JHL-HUST/Admix) and place it in data/.
 
 ### Runing baseline
 
