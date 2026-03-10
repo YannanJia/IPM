@@ -228,11 +228,15 @@ def compute_key_mask(model, input_tensor, y):
         size=input_tensor.shape[2:],
         mode='bilinear',
         align_corners=False
-    ) 
+    )
 
-    mean = torch.mean(heatmap_resized, dim=(2, 3), keepdim=True)  
-    std = torch.std(heatmap_resized, dim=(2, 3), keepdim=True) + 1e-6  
-    weight_matrix = (heatmap_resized - mean) / std 
+    min_vals = torch.amin(heatmap_resized, dim=(2, 3), keepdim=True)
+    max_vals = torch.amax(heatmap_resized, dim=(2, 3), keepdim=True)
+    heatmap_norm = (heatmap_resized - min_vals) / (max_vals - min_vals + 1e-6)
+
+    mean = torch.mean(heatmap_norm, dim=(2, 3), keepdim=True)  
+    std = torch.std(heatmap_norm, dim=(2, 3), keepdim=True) + 1e-6  
+    weight_matrix = (heatmap_norm - mean) / std 
     key_mask = (weight_matrix > 1).float()  
 
     cam_extractor.remove_hooks()
